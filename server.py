@@ -21,7 +21,7 @@ def guess(name):
     age_response.raise_for_status()
     age = loads(age_response.text)["age"]
 
-    gender_response = get("https://api.genderize.io", params=parameters, timeout=10)
+    gender_response = get(url="https://api.genderize.io", params=parameters, timeout=10)
     gender_response.raise_for_status()
     gender = loads(gender_response.text)["gender"]
     print(gender)
