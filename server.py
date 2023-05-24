@@ -1,6 +1,5 @@
 from random import randint
 from datetime import date
-from json import loads
 from requests import get
 from flask import Flask, render_template
 
@@ -19,11 +18,17 @@ def guess(name):
     }
     age_response = get(url="https://api.agify.io", params=parameters, timeout=10)
     age_response.raise_for_status()
-    age = loads(age_response.text)["age"]
+    age = age_response.json()["age"]
 
     gender_response = get(url="https://api.genderize.io", params=parameters, timeout=10)
     gender_response.raise_for_status()
-    gender = loads(gender_response.text)["gender"]
-    print(gender)
+    gender = gender_response.json()["gender"]
 
     return render_template("name-game.html", name=name, age=age, gender=gender)
+
+@app.route("/blog")
+def blog():
+    blog_response = get(url="https://api.npoint.io/c790b4d5cab58020d391", timeout=10)
+    blog_response.raise_for_status()
+    text = blog_response.json()
+    return render_template("blog.html", text=text)
