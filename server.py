@@ -27,4 +27,3 @@ def guess(name):
     print(gender)
 
     return render_template("name-game.html", name=name, age=age, gender=gender)
-
