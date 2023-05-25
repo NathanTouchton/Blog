@@ -1,2 +1,3 @@
-class Post:
-    pass
+# class Post:
+#     def __init__(self):
+#         self.number = 
