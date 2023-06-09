@@ -20,6 +20,5 @@ def home():
     return render_template("index.html", blog_posts=blog_posts)
 
 @app.route("/post/<number>")
-# I think the issue lies with getting the post number.
 def post_func(number):
-    return render_template("post.html", number=number, posts=blog_posts)
+    return render_template("post.html", number=number, blog_posts=blog_posts)
